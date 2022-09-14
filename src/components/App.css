@@ -10,6 +10,12 @@ html {
   font-size: 62.5%;
 }
 
+@media (max-width: 600px) {
+  html {
+    font-size: 40%;
+  }
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -41,4 +47,11 @@ body {
 
   font-size: 8rem;
   letter-spacing: 6px;
+}
+
+@media (max-width: 741px) {
+  .welcome {
+    margin-top: 7rem;
+    font-size: 4rem;
+  }
 }

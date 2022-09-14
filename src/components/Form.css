@@ -13,6 +13,12 @@
   padding: 2rem;
   margin: 2rem 20%;
 }
+@media (max-width: 900px) {
+  .form-container {
+    border: none;
+    background-color: transparent;
+  }
+}
 .time-container {
   display: flex;
   justify-content: space-around;

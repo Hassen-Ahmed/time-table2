@@ -12,6 +12,7 @@
 
   position: relative;
 }
+
 .btn-sort {
   position: absolute;
   top: 3rem;
@@ -69,8 +70,8 @@ span {
   text-align: left;
   width: 50%;
   font-size: 2rem;
-  margin-left: 0.9rem;
   border-left: solid 0.2rem black;
+  margin-left: 0.9rem;
   padding: 1.5rem;
 }
 
@@ -94,4 +95,20 @@ span {
   font-weight: 600;
 
   cursor: pointer;
+}
+@media (max-width: 741px) {
+  .time-table-container {
+    margin: 0.2rem 1rem;
+    padding: 0.5rem;
+  }
+  .time-task-container-sub {
+    margin-left: 0.2rem;
+    /* padding: 0.3rem; */
+  }
+  .time-task-container-sub p:not(:first-child) {
+    /* margin-left: 0.9rem; */
+    /* padding: 1.5rem; */
+    padding: 0.5rem;
+    width: 60%;
+  }
 }

@@ -33,6 +33,14 @@
   cursor: pointer;
   box-shadow: 0.6rem 0.6rem 1.3rem rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 741px) {
+  .homepage-btn {
+    font-size: 2rem;
+  }
+  .homepage-contianer h1 {
+    font-size: 5rem;
+  }
+}
 
 .homepage-btn:hover {
   transform: translateY(-0.5rem);
