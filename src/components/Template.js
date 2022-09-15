@@ -27,7 +27,7 @@ function Template(props) {
     new Date().toLocaleTimeString()
   );
 
-  const [sound, setSounds] = useState(
+  const [sound, setSound] = useState(
     new Howl({
       src: Bleep,
     })
