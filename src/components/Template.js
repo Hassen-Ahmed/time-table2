@@ -10,41 +10,51 @@ function Template(props) {
   const [timeOne, setTimeOne] = useState("");
   const [timeTwo, setTimeTwo] = useState("");
   const [task, setTask] = useState("");
+  const [when, setWhen] = useState("Unknow");
 
   const [arr, setArr] = useState([]);
 
   // onClickTask handler
 
-  // const [currentTime, setCurrentTime] = useState(
-  //   new Date().toLocaleTimeString()
-  // );
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString()
+  );
 
-  // useEffect(() => {
-  //   // setTimeout(() => {
-  //   //   setCurrentTime(new Date().toLocaleTimeString());
-  //   // }, 1000);
+  useEffect(() => {
+    setTimeout(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+      setWhen(new Date().toLocaleDateString());
+    }, 1000);
 
-  //   // 01:10 - 02:10
-  //   arr.forEach((item) => {
-  //     if (item.time.slice(0, 5) === String(currentTime).replace(" PM", "")) {
-  //       async function audioHandler() {
-  //         let audioOne = await new Audio(
-  //           "http://soundbible.com/grab.php?id=1252&type=mp3"
-  //         );
-  //         audioOne.play();
-  //       }
+    arr.forEach((item) => {
+      let timeForAlarm = String(item.time.slice(0, 5));
+      if (timeForAlarm[0] === "0") {
+        timeForAlarm = String(item.time.slice(1, 5));
+      } else if (timeForAlarm[0] === "1") {
+        timeForAlarm = String(item.time.slice(0, 5));
+      }
 
-  //       // audioHandler();
-  //     }
-  //   });
+      if (
+        String(timeForAlarm) ===
+        String(currentTime).replace(" PM", "").slice(0, 4)
+      ) {
+        console.log("Bleeping");
+        async function audioHandler() {
+          let audioOne = await new Audio(
+            "http://soundbible.com/grab.php?id=1252&type=mp3"
+          );
+          audioOne.play();
+        }
 
-  //   console.log(String(currentTime).replace(" PM", "").slice(0, 4));
+        audioHandler();
+      }
+    });
 
-  //   // console.log(String(currentTime).replace(" PM", ""), "str");
-  // }, [currentTime]);
+    // console.log(String(currentTime).replace(" PM", "").slice(0, 7));
+  }, [arr, currentTime]);
 
   const onClickTask = function () {
-    if (task && timeOne && timeTwo) {
+    if (task.trim() && timeOne.trim() && timeTwo.trim()) {
       setArr((prev) => {
         return [
           ...prev,
@@ -52,6 +62,7 @@ function Template(props) {
             key: `${Math.random() * 212457}`,
             time: `${timeOne}  -  ${timeTwo}`,
             task: `${task}`,
+            when: `${when}`,
           },
         ];
       });
@@ -89,6 +100,7 @@ function Template(props) {
   };
 
   // useEffect section down
+
   useEffect(() => {
     async function loadDataFunc() {
       let loadData = await JSON.parse(localStorage.getItem(props.storageName));

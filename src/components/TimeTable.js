@@ -19,6 +19,7 @@ function TimeTable(props) {
         <div className="time-task-container-sub" key={item.key}>
           <p>{item.time}</p>
           <p>{item.task}</p>
+          <sub className="when">{item.when}</sub>
           <button
             onClick={() => props.onClick(item.key)}
             className="time-task-delete"
