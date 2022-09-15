@@ -19,6 +19,20 @@ function TimeTable(props) {
         <div className="time-task-container-sub" key={item.key}>
           <p>{item.time}</p>
           <p>{item.task}</p>
+
+          {props.areYouSure && item.key === props.keyValue && (
+            <div className="are-you-sure">
+              <h2>Are you Sure?</h2>
+              <div>
+                <button onClick={() => props.areYouSureYesHandler(item.key)}>
+                  Yes
+                </button>
+
+                <button onClick={props.areYouSureNoHandler}>No</button>
+              </div>
+            </div>
+          )}
+
           <sub className="when">{item.when}</sub>
           <button
             onClick={() => props.onClick(item.key)}

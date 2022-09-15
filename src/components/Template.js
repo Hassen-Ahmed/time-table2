@@ -13,6 +13,11 @@ function Template(props) {
   const [when, setWhen] = useState("Unknow");
 
   const [arr, setArr] = useState([]);
+  const [sortArr, setSortArr] = useState(null);
+  const [isSort, setIsSort] = useState(false);
+
+  const [areYouSure, setAreYouSure] = useState(false);
+  const [keyValue, setKeyValue] = useState("");
 
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString()
@@ -78,22 +83,31 @@ function Template(props) {
       setTimeTwo("");
       setTask("");
     }
+    setIsSort(false);
   };
 
+  // sort Handler
   const sortHandler = () => {
-    setArr((prev) => {
-      const arrTest = [];
-
-      prev.forEach((item) => {
-        arrTest.unshift(item);
-      });
-
-      return [...arrTest];
+    let sortedList = [];
+    arr.forEach((item) => {
+      sortedList.unshift(item);
     });
+    setSortArr(sortedList);
+
+    isSort ? setIsSort(false) : setIsSort(true);
   };
 
+  // delete and areYouSure Handler
   const onClickDelete = function (item) {
+    setAreYouSure(true);
+    setKeyValue(item);
+  };
+
+  const areYouSureYesHandler = function (item) {
     setArr((prev) => prev.filter((cur) => cur.key !== item));
+  };
+  const areYouSureNoHandler = function () {
+    setAreYouSure(false);
   };
 
   // onChangeTime handler
@@ -142,11 +156,14 @@ function Template(props) {
       />
       <TimeTable
         dayName={props.dayName}
-        arr={arr}
-        onClick={onClickDelete}
+        arr={isSort ? sortArr : arr}
         sort={sortHandler}
+        onClick={onClickDelete}
+        areYouSureYesHandler={areYouSureYesHandler}
+        areYouSureNoHandler={areYouSureNoHandler}
+        areYouSure={areYouSure}
+        keyValue={keyValue}
       />
-      <audio src=""></audio>
     </div>
   );
 }
