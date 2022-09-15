@@ -59,7 +59,7 @@ function Template(props) {
       }
     });
 
-    console.log(String(currentTime).replace(" PM", "").slice(0, 7));
+    // console.log(String(currentTime).replace(" PM", "").slice(0, 7));
   }, [arr, currentTime, sound]);
 
   // onClickTask handler
