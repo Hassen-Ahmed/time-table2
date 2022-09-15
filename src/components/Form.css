@@ -13,10 +13,14 @@
   padding: 2rem;
   margin: 2rem 20%;
 }
-@media (max-width: 900px) {
+@media (max-width: 790px) {
   .form-container {
     border: none;
     background-color: transparent;
+  }
+  .time-container {
+    flex-direction: column;
+    margin-bottom: 2rem;
   }
 }
 .time-container {
