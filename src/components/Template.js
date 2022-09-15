@@ -27,16 +27,16 @@ function Template(props) {
     new Date().toLocaleTimeString()
   );
 
-  const [sound] = useState(
+  const [sound, setSounds] = useState(
     new Howl({
-      src: [Bleep],
+      src: Bleep,
     })
   );
   //
   Howler.volume(0.5);
 
   useEffect(() => {
-    const soundPlay = (src) => sound.play();
+    const soundPlay = () => sound.play();
 
     setTimeout(() => {
       setCurrentTime(new Date().toLocaleTimeString());
