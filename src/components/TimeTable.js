@@ -3,6 +3,18 @@ import React from "react";
 import "./TimeTable.css";
 
 function TimeTable(props) {
+  //
+
+  [...document.querySelectorAll(".time-task-container-sub")].forEach(
+    (item, i) => {
+      if (i % 2 !== 0) {
+        item.style.backgroundColor = "rgba(190, 178, 162, 0.5)";
+      }
+    }
+  );
+
+  //
+
   return (
     <div className="time-table-container">
       <h2>
