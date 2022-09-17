@@ -21,7 +21,7 @@ function Template(props) {
   const [isSort, setIsSort] = useState(false);
 
   const [alarmBox, setAlarmBox] = useState(false);
-  const [alarmOnOff, setAlarmOnOff] = useState(false);
+  const [alarmOnOff, setAlarmOnOff] = useState(true);
 
   const [areYouSure, setAreYouSure] = useState(false);
   const [keyValue, setKeyValue] = useState("");
@@ -48,7 +48,7 @@ function Template(props) {
     }, 1000);
 
     if (alarmOnOff) {
-      console.log("alarm on");
+      // console.log("alarm on");
       arr.forEach((item, i) => {
         // );
 
