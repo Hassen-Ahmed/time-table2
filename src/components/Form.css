@@ -19,7 +19,7 @@
     background-color: transparent;
   }
   .time-container {
-    flex-direction: column;
+    /* flex-direction: column; */
     margin-bottom: 2rem;
   }
 }
@@ -30,7 +30,8 @@
 }
 
 .task-input {
-  height: 6rem;
+  height: 7rem;
+  width: 45rem;
   text-align: center;
   font-size: 2rem;
   /* font-size: 2rem; */
@@ -44,8 +45,10 @@
   color: rgba(255, 255, 255, 0.601);
 }
 .time-container input {
-  height: 3rem;
-  width: 20rem;
+  /* height: 3rem; */
+  height: 6rem;
+  /* width: 20rem; */
+  /* width: 40rem; */
   padding: 2rem;
   margin: 2rem;
 
@@ -57,6 +60,8 @@
 }
 .time-container h2 {
   color: white;
+  font-size: 3rem;
+  font-weight: 400;
 }
 
 .btn-form-container {

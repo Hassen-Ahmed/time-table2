@@ -1,17 +1,39 @@
 //
-import React from "react";
+// import React, { useCallback, useState, useEffect } from "react";
+// import React, { useState } from "react";
 import "./TimeTable.css";
 
 function TimeTable(props) {
   //
 
-  [...document.querySelectorAll(".time-task-container-sub")].forEach(
-    (item, i) => {
-      if (i % 2 !== 0) {
-        item.style.backgroundColor = "rgba(190, 178, 162, 0.5)";
-      }
-    }
-  );
+  // const [docm, setDocm] = useState("");
+
+  // const styling = useCallback(() => {
+  //   // let docm = [...document.querySelectorAll(".time-task-container-sub")];
+
+  //   docm.forEach((item, i) => {
+  //     if (i % 2 !== 0) {
+  //       item.style.backgroundColor = "rgba(190, 178, 162, 0.5)";
+  //       // console.log("know styling work!");
+  //       // c onsole.log(docm);
+  //     }
+  //   });
+  // }, [docm]);
+
+  // useEffect(() => {
+  //   // setDocm([...document.querySelectorAll(".time-task-container-sub")]);
+  //   // styling();
+  //   async function styling() {
+  //     // console.log("it will work ok.");
+  //     let docm2 = await document.querySelectorAll(".time-task-container-sub");
+  //     setDocm([...docm2]);
+  //   }
+  //   styling();
+
+  //   docm.forEach((item, i) => {
+  //     item.style.backgroundColor = "rgba(190, 178, 162, 0.5)";
+  //   });
+  // }, [docm]);
 
   //
 
