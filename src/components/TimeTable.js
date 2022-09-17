@@ -49,8 +49,13 @@ function TimeTable(props) {
         <h2>Time</h2>
         <h2>Tasks</h2>
       </div>
-      {props.arr.map((item) => (
-        <div className="time-task-container-sub" key={item.key}>
+      {props.arr.map((item, i) => (
+        <div
+          className={`time-task-container-sub ${
+            i % 2 === 0 && "time-task-container-sub-add"
+          } ${i === props.alarmTag && "alarm-red"}`}
+          key={item.key}
+        >
           <p>{item.time}</p>
           <p>{item.task}</p>
 

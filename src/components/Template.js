@@ -23,6 +23,8 @@ function Template(props) {
   const [areYouSure, setAreYouSure] = useState(false);
   const [keyValue, setKeyValue] = useState("");
 
+  const [indexOfAlarm, setIndexOfAlarm] = useState(null);
+
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString()
   );
@@ -42,13 +44,14 @@ function Template(props) {
       setWhen(new Date().toLocaleDateString());
     }, 1000);
 
-    arr.forEach((item) => {
+    arr.forEach((item, i) => {
       let timeForAlarm = String(item.time.slice(0, 5));
       if (timeForAlarm[0] === "0") {
         timeForAlarm = String(item.time.slice(1, 5));
         // console.log("is Zero");
       } else if (timeForAlarm[0] === "1") {
         timeForAlarm = String(item.time.slice(0, 5));
+        setIndexOfAlarm("");
         // console.log("not Zero", timeForAlarm);
       }
 
@@ -56,6 +59,7 @@ function Template(props) {
         String(timeForAlarm) ===
         String(String(currentTime).replace(" PM", "").slice(0, 5))
       ) {
+        setIndexOfAlarm(i);
         sound.play();
         // console.log("know we should rendering it.");
         // soundPlay();
@@ -164,6 +168,7 @@ function Template(props) {
         areYouSureNoHandler={areYouSureNoHandler}
         areYouSure={areYouSure}
         keyValue={keyValue}
+        alarmTag={indexOfAlarm}
       />
     </div>
   );

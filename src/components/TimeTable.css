@@ -66,8 +66,33 @@ span {
   background-color: rgba(250, 235, 215, 0.5);
   margin: 0.5rem;
   width: 100%;
+  padding-top: 1rem;
 
   position: relative;
+}
+.time-task-container-sub-add {
+  background-color: rgba(119, 170, 198, 0.5);
+}
+.alarm-red {
+  background-color: rgba(119, 170, 198, 0.5);
+  animation-name: alarm-red;
+  animation-timing-function: ease;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes alarm-red {
+  10% {
+    background-color: rgba(220, 60, 60, 0.632);
+  }
+
+  60% {
+    background-color: rgba(119, 170, 198, 0.5);
+  }
+
+  100% {
+    background-color: rgba(220, 60, 60, 0.632);
+  }
 }
 .when {
   position: absolute;
