@@ -55,7 +55,7 @@ function TimeTable(props) {
       </h2>
       <div>
         <button
-          className={`${props.alarmOnOff ? "btn-alarm-on" : "btn-alarm"}`}
+          className={`${props.alarmTag ? "btn-alarm-on" : "btn-alarm"}`}
           onClick={props.alarmBoxHandler}
         >
           Alarm
