@@ -35,6 +35,46 @@
   transform: scale(0.9);
   box-shadow: 0.15rem 0.25rem 0.7rem rgba(0, 0, 0, 0.25);
 }
+.btn-alarm {
+  position: absolute;
+  top: 2rem;
+  right: 10rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  color: white;
+  background-color: #2a7d9169;
+  border: solid 0.1rem white;
+  border-radius: 1rem;
+  transition: all 0.2s ease;
+}
+.btn-alarm-on {
+  position: absolute;
+  top: 2rem;
+  right: 10rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  color: white;
+  background-color: rgb(216, 104, 104);
+  border: solid 0.1rem white;
+  border-radius: 1rem;
+  transition: all 0.2s ease;
+
+  animation-name: alarm-red;
+  animation-timing-function: ease;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+.btn-alarm:hover {
+  transform: scale(1.2);
+  box-shadow: 0.3rem 0.5rem 1rem rgba(0, 0, 0, 0.25);
+}
 span {
   background-color: rgba(255, 255, 255, 0.524);
   padding: 1rem;

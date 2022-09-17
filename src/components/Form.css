@@ -67,8 +67,8 @@
 .btn-form-container {
   background-color: rgb(23, 180, 23);
   /* background-color: #25b6da9d; */
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   margin: 1rem;
   text-align: center;
   border-radius: 1rem;
@@ -88,11 +88,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 10rem;
   border: none;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 900;
   color: green;
 }

@@ -20,6 +20,9 @@ function Template(props) {
   const [sortArr, setSortArr] = useState(null);
   const [isSort, setIsSort] = useState(false);
 
+  const [alarmBox, setAlarmBox] = useState(false);
+  const [alarmOnOff, setAlarmOnOff] = useState(false);
+
   const [areYouSure, setAreYouSure] = useState(false);
   const [keyValue, setKeyValue] = useState("");
 
@@ -44,30 +47,42 @@ function Template(props) {
       setWhen(new Date().toLocaleDateString());
     }, 1000);
 
-    arr.forEach((item, i) => {
-      let timeForAlarm = String(item.time.slice(0, 5));
-      if (timeForAlarm[0] === "0") {
-        timeForAlarm = String(item.time.slice(1, 5));
-        // console.log("is Zero");
-      } else if (timeForAlarm[0] === "1") {
-        timeForAlarm = String(item.time.slice(0, 5));
-        setIndexOfAlarm("");
-        // console.log("not Zero", timeForAlarm);
-      }
+    if (alarmOnOff) {
+      arr.forEach((item, i) => {
+        // let timeForAlarm = String(item.time.slice(0, 5));
+        // if (timeForAlarm[0] === "0") {
+        //   timeForAlarm = String(item.time.slice(1, 5));
+        //   // console.log("is Zero");
+        // } else if (timeForAlarm[0] === "1") {
+        //   timeForAlarm = String(item.time.slice(0, 5));
+        //   setIndexOfAlarm("");
+        //   // console.log("not Zero", timeForAlarm);
+        // }
+        // console.log(
+        //   item.time.slice(0, 5),
+        //   "time",
+        //   String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
+        // );
 
-      if (
-        String(timeForAlarm) ===
-        String(String(currentTime).replace(" PM", "").slice(0, 5))
-      ) {
-        setIndexOfAlarm(i);
-        sound.play();
-        // console.log("know we should rendering it.");
-        // soundPlay();
-      }
-    });
+        if (
+          String(item.time.slice(0, 5)) ===
+          String(
+            String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
+          )
+        ) {
+          setIndexOfAlarm(i);
+          setTimeout(() => {
+            setIndexOfAlarm("");
+          }, 5000);
+          sound.play();
+          // console.log("know we should rendering it.");
+          // soundPlay();
+        }
+      });
+    }
 
     // console.log(String(currentTime).replace(" PM", "").slice(0, 5));
-  }, [arr, currentTime, sound]);
+  }, [arr, currentTime, sound, alarmOnOff]);
 
   // onClickTask handler
 
@@ -78,7 +93,7 @@ function Template(props) {
           ...prev,
           {
             key: `${Math.random() * 212457}`,
-            time: `${timeOne}  -  ${timeTwo}`,
+            time: `${timeOne.padStart(5, 0)}  -  ${timeTwo.padStart(5, 0)}`,
             task: `${task}`,
             when: `${when}`,
           },
@@ -100,6 +115,21 @@ function Template(props) {
     setSortArr(sortedList);
 
     isSort ? setIsSort(false) : setIsSort(true);
+  };
+
+  const alarmBoxHandler = () => {
+    if (alarmBox) {
+      setAlarmBox(false);
+    } else {
+      setAlarmBox(true);
+    }
+  };
+
+  const alarmOnHandler = function () {
+    setAlarmOnOff(true);
+  };
+  const alarmOffHandler = function () {
+    setAlarmOnOff(false);
   };
 
   // delete and areYouSure Handler
@@ -159,16 +189,22 @@ function Template(props) {
         valueTimeTwo={timeTwo}
         valueTask={task}
       />
+
       <TimeTable
         dayName={props.dayName}
         arr={isSort ? sortArr : arr}
         sort={sortHandler}
+        alarmBoxHandler={alarmBoxHandler}
+        alarmValue={alarmBox}
+        alarmOnOff={alarmOnOff}
         onClick={onClickDelete}
         areYouSureYesHandler={areYouSureYesHandler}
         areYouSureNoHandler={areYouSureNoHandler}
         areYouSure={areYouSure}
         keyValue={keyValue}
         alarmTag={indexOfAlarm}
+        alarmOnHandler={alarmOnHandler}
+        alarmOffHandler={alarmOffHandler}
       />
     </div>
   );

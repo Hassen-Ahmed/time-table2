@@ -1,0 +1,53 @@
+.alarm-container {
+  width: 20rem;
+  /* height: 10rem; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color: antiquewhite; */
+  background-color: rgba(70, 83, 114, 0.95);
+  position: absolute;
+  top: -12rem;
+  right: 2rem;
+  /* padding: 1rem;
+  */
+  /* padding-top: -5rem; */
+  border-radius: 1rem;
+}
+.alarm-heading {
+  margin: 2rem;
+  font-size: 3rem;
+  color: white;
+}
+
+.alarm-btn-box {
+  margin-bottom: 2rem;
+}
+
+.alarm-btn-box button {
+  margin: auto 1rem;
+  padding: 1rem;
+  width: 6rem;
+  border-radius: 10rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+.alarm-btn-box button:hover {
+  transform: scale(1.2);
+  box-shadow: 0.3rem 0.5rem 1rem rgba(0, 0, 0, 0.25);
+}
+.alarm-btn-box button:active {
+  transform: scale(0.9);
+  box-shadow: 0.15rem 0.25rem 0.7rem rgba(0, 0, 0, 0.25);
+}
+
+.alarm-on-btn {
+  background-color: orangered;
+  color: white;
+}
+
+.alarm-off-btn {
+  background-color: white;
+}

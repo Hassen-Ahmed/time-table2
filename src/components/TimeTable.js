@@ -1,6 +1,8 @@
 //
 // import React, { useCallback, useState, useEffect } from "react";
 // import React, { useState } from "react";
+
+import AlarmBtn from "./AlarmBtn";
 import "./TimeTable.css";
 
 function TimeTable(props) {
@@ -39,12 +41,29 @@ function TimeTable(props) {
 
   return (
     <div className="time-table-container">
+      {props.alarmValue && (
+        <AlarmBtn
+          onClick={props.alarmBoxHandler}
+          alarmOffHandler={props.alarmOffHandler}
+          alarmOnHandler={props.alarmOnHandler}
+          alarmValue={props.alarmValue}
+        />
+      )}
+
       <h2>
         <span>{props.dayName}</span> Time-Table
       </h2>
-      <button className="btn-sort" onClick={props.sort}>
-        Sort &darr;
-      </button>
+      <div>
+        <button
+          className={`${props.alarmOnOff ? "btn-alarm-on" : "btn-alarm"}`}
+          onClick={props.alarmBoxHandler}
+        >
+          Alarm
+        </button>
+        <button className="btn-sort" onClick={props.sort}>
+          Sort &darr;
+        </button>
+      </div>
       <div className="time-task-container-main">
         <h2>Time</h2>
         <h2>Tasks</h2>
