@@ -58,12 +58,20 @@ function Template(props) {
 
       if (alarmOnOff) {
         arr.forEach(function (item, i) {
+          // console.log("in chrome test");
+          // console.log(
+          //   item.time.slice(0, 5),
+          //   "in chrome test",
+          //   2,
+          //   String(currentTime).replace(" PM", "").slice(0, 5).padStart(5, 0)
+          // );
+
           // );
 
           if (
             String(item.time.slice(0, 5)) ===
             String(
-              String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
+              String(currentTime).replace(" PM", "").slice(0, 5).padStart(5, 0)
             )
           ) {
             // console.log("alarm on");
@@ -91,6 +99,9 @@ function Template(props) {
             // console.log("know we should rendering it.");
             // soundPlay();
           }
+          // else {
+          //   // setIndexOfAlarm(i);
+          // }
         });
       } else {
         setIndexOfAlarm("");
