@@ -34,65 +34,68 @@ function Template(props) {
 
   const [sound] = useState(
     new Howl({
-      src: Bleep,
+      src: [Bleep],
       html5: true,
     })
   );
 
   Howler.volume(0.5);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setCurrentTime(new Date().toLocaleTimeString());
-      setWhen(new Date().toLocaleDateString());
-    }, 1000);
+  useEffect(
+    function () {
+      setTimeout(function () {
+        setCurrentTime(new Date().toLocaleTimeString());
+        setWhen(new Date().toLocaleDateString());
+      }, 1000);
 
-    if (alarmOnOff) {
-      arr.forEach((item, i) => {
-        // );
+      if (alarmOnOff) {
+        arr.forEach(function (item, i) {
+          // );
 
-        if (
-          String(item.time.slice(0, 5)) ===
-          String(
-            String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
-          )
-        ) {
-          console.log("alarm on");
-          setIndexOfAlarm(i);
-          setTimeout(() => {
-            setIndexOfAlarm("");
-          }, 5000);
-          sound.play();
+          if (
+            String(item.time.slice(0, 5)) ===
+            String(
+              String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
+            )
+          ) {
+            console.log("alarm on");
+            setIndexOfAlarm(i);
+            setTimeout(function () {
+              setIndexOfAlarm("");
+            }, 5000);
+            sound.play();
 
-          // let timeForAlarm = String(item.time.slice(0, 5));
-          // if (timeForAlarm[0] === "0") {
-          //   timeForAlarm = String(item.time.slice(1, 5));
-          //   // console.log("is Zero");
-          // } else if (timeForAlarm[0] === "1") {
-          //   timeForAlarm = String(item.time.slice(0, 5));
-          //   setIndexOfAlarm("");
-          //   // console.log("not Zero", timeForAlarm);
-          // }
-          // console.log(
-          //   item.time.slice(0, 5),
-          //   "time",
-          //   String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
-          // console.log("know we should rendering it.");
-          // soundPlay();
-        }
-      });
-    } else {
-      setIndexOfAlarm("");
-    }
+            // let timeForAlarm = String(item.time.slice(0, 5));
+            // if (timeForAlarm[0] === "0") {
+            //   timeForAlarm = String(item.time.slice(1, 5));
+            //   // console.log("is Zero");
+            // } else if (timeForAlarm[0] === "1") {
+            //   timeForAlarm = String(item.time.slice(0, 5));
+            //   setIndexOfAlarm("");
+            //   // console.log("not Zero", timeForAlarm);
+            // }
+            // console.log(
+            //   item.time.slice(0, 5),
+            //   "time",
+            //   String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
+            // console.log("know we should rendering it.");
+            // soundPlay();
+          }
+        });
+      } else {
+        setIndexOfAlarm("");
+      }
 
-    // console.log(String(currentTime).replace(" PM", "").slice(0, 5));
-  }, [arr, currentTime, sound, alarmOnOff]);
+      // console.log(String(currentTime).replace(" PM", "").slice(0, 5));
+    },
+    [arr, currentTime, sound, alarmOnOff]
+  );
 
   // onClickTask handler
 
   const onClickTask = function () {
     if (task.trim() && timeOne.trim() && timeTwo.trim()) {
-      setArr((prev) => {
+      setArr(function (prev) {
         return [
           ...prev,
           {
@@ -111,7 +114,7 @@ function Template(props) {
   };
 
   // sort Handler
-  const sortHandler = () => {
+  const sortHandler = function () {
     let sortedList = [];
     arr.forEach((item) => {
       sortedList.unshift(item);
@@ -121,7 +124,7 @@ function Template(props) {
     isSort ? setIsSort(false) : setIsSort(true);
   };
 
-  const alarmBoxHandler = () => {
+  const alarmBoxHandler = function () {
     if (alarmBox) {
       setAlarmBox(false);
     } else {
@@ -172,13 +175,16 @@ function Template(props) {
     loadDataFunc();
   }, [props.storageName]);
 
-  useEffect(() => {
-    async function setDataFunc() {
-      let setData = await JSON.stringify(arr);
-      localStorage.setItem(props.storageName, setData);
-    }
-    setDataFunc();
-  }, [props.storageName, arr]);
+  useEffect(
+    function () {
+      async function setDataFunc() {
+        let setData = await JSON.stringify(arr);
+        localStorage.setItem(props.storageName, setData);
+      }
+      setDataFunc();
+    },
+    [props.storageName, arr]
+  );
 
   // return section down
 
