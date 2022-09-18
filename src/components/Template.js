@@ -50,43 +50,84 @@ function Template(props) {
     if (alarmOnOff) {
       // console.log("alarm on");
       arr.forEach((item, i) => {
-        // );
+        let timeForAlarm = String(item.time.slice(0, 5));
+
+        if (timeForAlarm[0] === "0") {
+          timeForAlarm = String(item.time.slice(1, 5));
+          // console.log("is Zero");
+        } else if (timeForAlarm[0] === "1") {
+          timeForAlarm = String(item.time.slice(0, 5));
+          // console.log("not Zero", timeForAlarm);
+        }
 
         if (
-          String(item.time.slice(0, 5)) ===
-          String(
-            String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
-          )
+          timeForAlarm === String(currentTime).replace(" PM", "").slice(0, 4)
         ) {
-          setIndexOfAlarm(i);
-          setTimeout(() => {
-            setIndexOfAlarm("");
-          }, 5000);
           sound.play();
-
-          // let timeForAlarm = String(item.time.slice(0, 5));
-          // if (timeForAlarm[0] === "0") {
-          //   timeForAlarm = String(item.time.slice(1, 5));
-          //   // console.log("is Zero");
-          // } else if (timeForAlarm[0] === "1") {
-          //   timeForAlarm = String(item.time.slice(0, 5));
-          //   setIndexOfAlarm("");
-          //   // console.log("not Zero", timeForAlarm);
-          // }
-          // console.log(
-          //   item.time.slice(0, 5),
-          //   "time",
-          //   String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
-          // console.log("know we should rendering it.");
-          // soundPlay();
+          setIndexOfAlarm(i);
+        } else {
+          setIndexOfAlarm("");
         }
+        // console.log(
+        //   item.time.slice(0, 5),
+        //   "time",
+        //   String(currentTime).replace(" PM", "").slice(0, 4)
+        // );
       });
     } else {
       setIndexOfAlarm("");
     }
-
-    // console.log(String(currentTime).replace(" PM", "").slice(0, 5));
   }, [arr, currentTime, sound, alarmOnOff]);
+
+  //
+  //
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setCurrentTime(new Date().toLocaleTimeString());
+  //     setWhen(new Date().toLocaleDateString());
+  //   }, 1000);
+
+  //   if (alarmOnOff) {
+  //     // console.log("alarm on");
+  //     arr.forEach((item, i) => {
+  //       // );
+
+  //       if (
+  //         String(item.time.slice(0, 5)) ===
+  //         String(
+  //           String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
+  //         )
+  //       ) {
+  //         setIndexOfAlarm(i);
+  //         setTimeout(() => {
+  //           setIndexOfAlarm("");
+  //         }, 5000);
+  //         sound.play();
+
+  //         // let timeForAlarm = String(item.time.slice(0, 5));
+  //         // if (timeForAlarm[0] === "0") {
+  //         //   timeForAlarm = String(item.time.slice(1, 5));
+  //         //   // console.log("is Zero");
+  //         // } else if (timeForAlarm[0] === "1") {
+  //         //   timeForAlarm = String(item.time.slice(0, 5));
+  //         //   setIndexOfAlarm("");
+  //         //   // console.log("not Zero", timeForAlarm);
+  //         // }
+  //         // console.log(
+  //         //   item.time.slice(0, 5),
+  //         //   "time",
+  //         //   String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
+  //         // console.log("know we should rendering it.");
+  //         // soundPlay();
+  //       }
+  //     });
+  //   } else {
+  //     setIndexOfAlarm("");
+  //   }
+
+  //   // console.log(String(currentTime).replace(" PM", "").slice(0, 5));
+  // }, [arr, currentTime, sound, alarmOnOff]);
 
   // onClickTask handler
 
