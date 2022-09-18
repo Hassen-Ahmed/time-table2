@@ -17,7 +17,7 @@ function Template(props) {
   const [when, setWhen] = useState("Unknow");
 
   const [arr, setArr] = useState([]);
-  const [sortArr, setSortArr] = useState(null);
+  const [sortArr, setSortArr] = useState("");
   const [isSort, setIsSort] = useState(false);
 
   const [alarmBox, setAlarmBox] = useState(false);
@@ -35,7 +35,15 @@ function Template(props) {
   const [sound] = useState(
     new Howl({
       src: [Bleep],
+      format: ["dolby", "webm", "mp3"],
       html5: true,
+      xhr: {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer:",
+        },
+        withCredentials: true,
+      },
     })
   );
 
@@ -58,11 +66,13 @@ function Template(props) {
               String(currentTime).replace(" PM", "").slice(0, 4).padStart(5, 0)
             )
           ) {
-            console.log("alarm on");
+            // console.log("alarm on");
             setIndexOfAlarm(i);
-            setTimeout(function () {
-              setIndexOfAlarm("");
-            }, 5000);
+
+            // setTimeout(function () {
+            //   setIndexOfAlarm("");
+            // }, 500);
+
             sound.play();
 
             // let timeForAlarm = String(item.time.slice(0, 5));
