@@ -53,7 +53,7 @@ function Template(props) {
     function () {
       setTimeout(function () {
         setCurrentTime(
-          new Date().toLocaleTimeString("en-US", { hour12: false })
+          new Date().toLocaleTimeString("en-GB", { hour12: false })
         );
         setWhen(new Date().toLocaleDateString());
       }, 1000);
