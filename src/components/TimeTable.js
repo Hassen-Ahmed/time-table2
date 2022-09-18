@@ -6,36 +6,46 @@ import AlarmBtn from "./AlarmBtn";
 import "./TimeTable.css";
 
 function TimeTable(props) {
-  //
-
-  // const [docm, setDocm] = useState("");
-
-  // const styling = useCallback(() => {
-  //   // let docm = [...document.querySelectorAll(".time-task-container-sub")];
-
-  //   docm.forEach((item, i) => {
-  //     if (i % 2 !== 0) {
-  //       item.style.backgroundColor = "rgba(190, 178, 162, 0.5)";
-  //       // console.log("know styling work!");
-  //       // c onsole.log(docm);
-  //     }
-  //   });
-  // }, [docm]);
-
   // useEffect(() => {
-  //   // setDocm([...document.querySelectorAll(".time-task-container-sub")]);
-  //   // styling();
-  //   async function styling() {
-  //     // console.log("it will work ok.");
-  //     let docm2 = await document.querySelectorAll(".time-task-container-sub");
-  //     setDocm([...docm2]);
-  //   }
-  //   styling();
+  //   setTimeout(() => {
+  //     setCurrentTime(new Date().toLocaleTimeString());
+  //     setWhen(new Date().toLocaleDateString());
+  //   }, 1000);
 
-  //   docm.forEach((item, i) => {
-  //     item.style.backgroundColor = "rgba(190, 178, 162, 0.5)";
-  //   });
-  // }, [docm]);
+  //   if (alarmOnOff) {
+  //     // console.log("alarm on");
+  //     arr.forEach((item, i) => {
+  //       let timeForAlarm = String(item.time.slice(0, 5));
+
+  //       if (timeForAlarm[0] === "0") {
+  //         timeForAlarm = String(item.time.slice(1, 5));
+  //         // console.log("is Zero");
+  //       } else if (timeForAlarm[0] === "1") {
+  //         timeForAlarm = String(item.time.slice(0, 5));
+  //         // setIndexOfAlarm("");
+  //         // console.log("not Zero", timeForAlarm);
+  //       }
+
+  //       if (
+  //         timeForAlarm === String(currentTime).replace(" PM", "").slice(0, 4)
+  //       ) {
+  //         sound.play();
+  //         setIndexOfAlarm(i);
+  //       } else {
+  //         setIndexOfAlarm("");
+  //       }
+  //       console.log(
+  //         item.time.slice(0, 5),
+  //         "time",
+  //         String(currentTime).replace(" PM", "").slice(0, 4)
+  //       );
+  //     });
+  //   } else {
+  //     setIndexOfAlarm("");
+  //   }
+  // }, [arr, currentTime, sound, alarmOnOff]);
+
+  //
 
   //
 
