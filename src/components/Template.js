@@ -29,7 +29,7 @@ function Template(props) {
   const [indexOfAlarm, setIndexOfAlarm] = useState(null);
 
   const [currentTime, setCurrentTime] = useState(
-    new Date().toLocaleTimeString()
+    new Date().toLocaleTimeString("en-US", { hour12: false })
   );
 
   const [sound] = useState(
@@ -52,7 +52,9 @@ function Template(props) {
   useEffect(
     function () {
       setTimeout(function () {
-        setCurrentTime(new Date().toLocaleTimeString());
+        setCurrentTime(
+          new Date().toLocaleTimeString("en-US", { hour12: false })
+        );
         setWhen(new Date().toLocaleDateString());
       }, 1000);
 
