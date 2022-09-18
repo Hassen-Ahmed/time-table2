@@ -68,11 +68,6 @@ function Template(props) {
         } else {
           setIndexOfAlarm("");
         }
-        // console.log(
-        //   item.time.slice(0, 5),
-        //   "time",
-        //   String(currentTime).replace(" PM", "").slice(0, 4)
-        // );
       });
     } else {
       setIndexOfAlarm("");
